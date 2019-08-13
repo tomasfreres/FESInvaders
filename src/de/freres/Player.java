@@ -1,6 +1,7 @@
 package de.freres;
 
 
+import java.awt.*;
 
 public class Player extends Token {
     private String name;
@@ -11,6 +12,4 @@ public class Player extends Token {
         this.name = name;
         livePoints = 3;
     }
-
-
 }

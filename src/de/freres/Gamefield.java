@@ -28,6 +28,8 @@ public class Gamefield extends Canvas {
         ge.draw(g);
 
         c.destroy();
+
+        Player player = new Player("Gott", 100, 100);
     }
 
 }
