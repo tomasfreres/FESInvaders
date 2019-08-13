@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae907c74-8106-48ae-83b4-4ed67d8900d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/de/freres/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/freres/Token.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/freres/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/freres/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/freres/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/freres/Player.java" afterDir="false" />
     </list>
@@ -22,6 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/freres/Main.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="30" />
             <state relative-caret-position="85">
               <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
               <folding>
@@ -34,30 +37,57 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/freres/Gamefield.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             <state relative-caret-position="68">
               <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/freres/Token.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#536#537#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#607#608#0" expanded="true" />
+                <element signature="e#642#643#0" expanded="true" />
+                <element signature="e#661#662#0" expanded="true" />
+                <element signature="e#691#692#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
+              </folding>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/freres/Gridfield.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-            </state>
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />        </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/freres/Alien.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="397">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+          </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/freres/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+            <state relative-caret-position="150">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/freres/KeyAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,11 +133,12 @@
       <list>
         <option value="$PROJECT_DIR$/FESInvder.iml" />
         <option value="$PROJECT_DIR$/FESInvader.iml" />
-        <option value="$PROJECT_DIR$/src/de/freres/Gamefield.java" />
-        <option value="$PROJECT_DIR$/src/de/freres/Token.java" />
-        <option value="$PROJECT_DIR$/src/de/freres/Alien.java" />
+        <option value="$PROJECT_DIR$/src/de/freres/Gridfield.java" />
         <option value="$PROJECT_DIR$/src/de/freres/Main.java" />
         <option value="$PROJECT_DIR$/src/de/freres/Player.java" />
+        <option value="$PROJECT_DIR$/src/de/freres/Gamefield.java" />
+        <option value="$PROJECT_DIR$/src/de/freres/Alien.java" />
+        <option value="$PROJECT_DIR$/src/de/freres/Token.java" />
         <option value="$PROJECT_DIR$/src/de/freres/KeyAdapter.java" />
       </list>
     </option>
@@ -123,6 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,6 +239,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25321338" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
@@ -214,8 +247,10 @@
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49930555" visible="true" weight="0.32919255" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32974428" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -223,7 +258,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50069445" side_tool="true" weight="0.32919255" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -238,6 +273,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/FESInvder.iml" />
     <entry file="file://$PROJECT_DIR$/FESInvader.iml" />
+    <entry file="file://$PROJECT_DIR$/src/de/freres/Gridfield.java" />
+    <entry file="file://$PROJECT_DIR$/src/de/freres/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="30" />
     <entry file="file://$PROJECT_DIR$/src/de/freres/Gridfield.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -247,6 +287,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/freres/Token.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
         <state relative-caret-position="272">
           <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
@@ -271,6 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/freres/Player.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
@@ -278,6 +322,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/freres/Alien.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/freres/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+          </folding>
         <state relative-caret-position="68">
           <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
