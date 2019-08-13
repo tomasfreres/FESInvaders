@@ -5,13 +5,15 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
+        Gamefield game = new Gamefield();
+
         JFrame field = new JFrame("FESInvaders");
 
         field.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        field.setContentPane(new Gamefield());
+        field.setSize(450, 300);
 
-        field.pack();
+        field.add(game);
 
         field.setVisible(true);
     }
