@@ -1,9 +1,10 @@
 package de.freres;
 
+
+
 public class Player extends Token {
     private String name;
     private int score;
-
 
     public Player(String name, int posx, int posy){
         super(posx, posy);
