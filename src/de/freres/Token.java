@@ -29,4 +29,17 @@ public abstract class Token {
 
     }
 
+    public int getX(){
+        return posx;
+    }
+    public int getY(){
+        return posy;
+    }
+    public void setX(int x){
+        posx = x;
+    }
+    public void setY(int y){
+        posy = y;
+    }
+
 }
