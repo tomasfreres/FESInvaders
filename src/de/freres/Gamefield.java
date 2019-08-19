@@ -21,6 +21,9 @@ public class Gamefield extends Canvas {
         Alien f = new Alien(30, 70);
         Alien ge = new Alien(50, 70);
 
+
+        Shot sa = new Shot(140,50, "up");
+
         setBackground(Color.BLACK);
         a.draw(g);
         b.draw(g);
@@ -29,6 +32,7 @@ public class Gamefield extends Canvas {
         e.draw(g);
         f.draw(g);
         ge.draw(g);
+        sa.draw(g);
 
         g.drawString("Highscore: ", 130, 50);
 
