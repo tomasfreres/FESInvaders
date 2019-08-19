@@ -38,4 +38,8 @@ public class Gamefield extends Canvas {
         player.draw(g);
     }
 
+    public Graphics getGraphicsContext(){
+        return g;
+    }
+
 }
