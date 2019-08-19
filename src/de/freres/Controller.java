@@ -2,10 +2,7 @@ package de.freres;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Controller extends Canvas {
 
@@ -33,8 +30,6 @@ public class Controller extends Canvas {
 
         shots.add(new Shot(225, 300, "up"));
         this.keyListener = new KeyEventClass(this);
-
-        refreshDisplay();
     }
 
     public void movePlayer(String move){
@@ -42,11 +37,9 @@ public class Controller extends Canvas {
     }
 
 
-    public void refreshDisplay() throws InterruptedException {
+    public void refreshDisplay(Graphics g) throws InterruptedException {
         //while(true){
-        Graphics test = gamefield.getGraphicsContext();
-        System.out.println("Graphicoutput is null " + test == null);
-           // gamefield.getGraphicsContext().fillRect(0,0,450,600);
+           //gamefield.getGraphicsContext().fillRect(0,0,450,600);
 
          /*   for (Alien k: aliens) {
                 k.draw(gamefield.getGraphicsContext());
@@ -56,11 +49,10 @@ public class Controller extends Canvas {
                 k.draw(gamefield.getGraphicsContext());
             } */
 
-            this.player.draw(gamefield.getGraphicsContext());
+
 
            // player.draw(g);
         }
-    }
 
 
     public void paint(Graphics g){
@@ -96,6 +88,16 @@ public class Controller extends Canvas {
             this.refreshDisplay(g);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
+        }
+    }
+    public int alienshot(){
+        int pposx = this.player.getX();
+        ArrayList<Integer> aposx = new ArrayList<>();
+
+
+        for (Alien k: aliens ){
+            aposx.add(k.getX());
+            }
         }
     }
 

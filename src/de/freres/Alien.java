@@ -29,5 +29,9 @@ public class Alien extends Token {
 
         g2d.drawRect(posx, posy, 10, 10);
     }
+    public void shoot(){
+
+    }
+
 
 }
