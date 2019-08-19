@@ -1,6 +1,11 @@
 package de.freres;
 
+<<<<<<< Updated upstream
 import javax.swing.*;
+=======
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +16,9 @@ public class Controller {
     private ArrayList<Alien> aliens;
     private ArrayList<Shot> shots;
     private Player player;
+    private KeyEventClass keyListener;
 
+<<<<<<< Updated upstream
     public Controller() throws InterruptedException {
         this.gamefield = new Gamefield();
         this.aliens = new ArrayList<>();
@@ -31,6 +38,17 @@ public class Controller {
         shots.add(new Shot(225,300, "up"));
 
         refreshDisplay();
+=======
+    public Controller() {
+        this.gamefield = new Gamefield();
+        this.aliens = new ArrayList<>();
+        this.player = new Player("Gott", 200, 450 );
+        this.keyListener = new KeyEventClass(this);
+    }
+
+    public void movePlayer(String move){
+        player.move(move);
+>>>>>>> Stashed changes
     }
 
 

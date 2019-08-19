@@ -1,7 +1,7 @@
 package de.freres;
 
-
 import java.awt.*;
+
 
 public class Player extends Token {
     private String name;
@@ -24,8 +24,32 @@ public class Player extends Token {
         g2d.drawRect(posx, posy, 10, 10);
     }
 
-    public void move(){
-
+    public void move(String move){
+        if (move =="up"){
+            super.getY();
+            posy = posy + 10;
+            super.setY(posy);
+            draw(g);
+        }
+        if (move =="down"){
+            super.getY();
+            posy = posy + 10;
+            super.setY(posy);
+            draw(g);
+        }
+        if (move =="left"){
+            super.getX();
+            posx = posx - 10;
+            super.setX(posx);
+            draw(g);
+        }
+        if (move =="right"){
+            super.getX();
+            posx = posx + 10;
+            super.setX(posx);
+            draw(g);
+        }
+        System.out.println(move);
     }
 
 }
