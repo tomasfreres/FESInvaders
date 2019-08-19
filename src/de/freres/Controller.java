@@ -1,11 +1,9 @@
 package de.freres;
 
-<<<<<<< Updated upstream
 import javax.swing.*;
-=======
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -18,15 +16,15 @@ public class Controller {
     private Player player;
     private KeyEventClass keyListener;
 
-<<<<<<< Updated upstream
     public Controller() throws InterruptedException {
         this.gamefield = new Gamefield();
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
-        //this.player = new Player();
+        this.player = new Player("Gott", 350, 250);
 
         JFrame field = new JFrame("FESInvaders");
 
+        field.addKeyListener(new KeyEventClass(this));
         field.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         field.setSize(450, 600);
@@ -35,35 +33,32 @@ public class Controller {
 
         field.setVisible(true);
 
-        shots.add(new Shot(225,300, "up"));
+        shots.add(new Shot(225, 300, "up"));
+        this.keyListener = new KeyEventClass(this);
 
         refreshDisplay();
-=======
-    public Controller() {
-        this.gamefield = new Gamefield();
-        this.aliens = new ArrayList<>();
-        this.player = new Player("Gott", 200, 450 );
-        this.keyListener = new KeyEventClass(this);
     }
 
     public void movePlayer(String move){
         player.move(move);
->>>>>>> Stashed changes
     }
 
 
     public void refreshDisplay() throws InterruptedException {
         //while(true){
-          //  TimeUnit.MILLISECONDS.sleep(500);
-            gamefield.getGraphicsContext().fillRect(0,0,450,600);
+        Graphics test = gamefield.getGraphicsContext();
+        System.out.println("Graphicoutput is null " + test == null);
+           // gamefield.getGraphicsContext().fillRect(0,0,450,600);
 
-            for (Alien k: aliens) {
+         /*   for (Alien k: aliens) {
                 k.draw(gamefield.getGraphicsContext());
             }
             for(Shot k: shots){
                 k.shotPosition();
                 k.draw(gamefield.getGraphicsContext());
-            }
+            } */
+
+            this.player.draw(gamefield.getGraphicsContext());
 
             //player.draw(gamefield.getGraphicsContext());
         //}

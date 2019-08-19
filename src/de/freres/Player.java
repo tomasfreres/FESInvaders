@@ -1,6 +1,7 @@
 package de.freres;
 
 import java.awt.*;
+import java.sql.SQLOutput;
 
 
 public class Player extends Token {
@@ -29,27 +30,24 @@ public class Player extends Token {
             super.getY();
             posy = posy + 10;
             super.setY(posy);
-            draw(g);
         }
         if (move =="down"){
             super.getY();
             posy = posy + 10;
             super.setY(posy);
-            draw(g);
         }
         if (move =="left"){
             super.getX();
             posx = posx - 10;
             super.setX(posx);
-            draw(g);
         }
         if (move =="right"){
             super.getX();
             posx = posx + 10;
             super.setX(posx);
-            draw(g);
         }
         System.out.println(move);
+        System.out.println(posx+posy);
     }
 
 }

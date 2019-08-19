@@ -5,14 +5,14 @@ import java.awt.*;
 
 public class Gamefield extends Canvas {
 
-    private Graphics g;
+    private Graphics gr;
 
     public Gamefield(){
 
     }
 
     public void paint(Graphics g){
-        this.g = g;
+        this.gr = g;
         Alien a = new Alien(30, 50);
         Alien b = new Alien(50, 50);
         Alien c = new Alien(70, 50);
@@ -25,9 +25,9 @@ public class Gamefield extends Canvas {
         Shot sa = new Shot(140,50, "up");
 
         setBackground(Color.BLACK);
-        a.draw(g);
-        b.draw(g);
-        c.draw(g);
+        a.draw(gr);
+        b.draw(gr);
+        c.draw(gr);
         d.draw(g);
         e.draw(g);
         f.draw(g);
@@ -40,7 +40,7 @@ public class Gamefield extends Canvas {
     }
 
     public Graphics getGraphicsContext(){
-        return g;
+        return gr;
     }
 
 }
