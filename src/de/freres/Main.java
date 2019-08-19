@@ -12,7 +12,7 @@ public class Main extends JFrame{
 
         field.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        field.setSize(450, 300);
+        field.setSize(450, 600);
 
         field.add(game);
 

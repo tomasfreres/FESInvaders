@@ -33,6 +33,9 @@ public class Gamefield extends Canvas {
         g.drawString("Highscore: ", 130, 50);
 
         c.destroy();
+
+        Player player = new Player("Gott", 200, 450);
+        player.draw(g);
     }
 
 }
