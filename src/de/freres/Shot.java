@@ -30,6 +30,6 @@ public class Shot extends Token{
         g2d.setColor(Color.WHITE);
         g2d.setStroke(stroke2);
 
-        g2d.drawLine(10,10,10,0);
+        g2d.drawLine(posx,posy,posx,posy-10);
     }
 }
