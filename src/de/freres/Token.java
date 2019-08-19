@@ -58,6 +58,7 @@ public abstract class Token {
     }
 
     public int getX(){
+
         return posx;
     }
     public int getY(){
