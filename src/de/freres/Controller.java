@@ -7,17 +7,15 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class Controller {
+public class Controller extends Canvas {
 
 
-    private Gamefield gamefield;
     private ArrayList<Alien> aliens;
     private ArrayList<Shot> shots;
     private Player player;
     private KeyEventClass keyListener;
 
     public Controller() throws InterruptedException {
-        this.gamefield = new Gamefield();
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
         this.player = new Player("Gott", 350, 250);
@@ -29,7 +27,7 @@ public class Controller {
 
         field.setSize(450, 600);
 
-        field.add(gamefield);
+        field.add(this);
 
         field.setVisible(true);
 
@@ -60,11 +58,46 @@ public class Controller {
 
             this.player.draw(gamefield.getGraphicsContext());
 
-            //player.draw(gamefield.getGraphicsContext());
-        //}
+           // player.draw(g);
+        }
     }
 
 
+    public void paint(Graphics g){
+        Alien a = new Alien(30, 50);
+        Alien b = new Alien(50, 50);
+        Alien c = new Alien(70, 50);
+        Alien d = new Alien(90, 50);
+        Alien e = new Alien(110, 50);
+        Alien f = new Alien(30, 70);
+        Alien ge = new Alien(50, 70);
+
+
+        Shot sa = new Shot(140,50, "up");
+
+        setBackground(Color.BLACK);
+        a.draw(g);
+        b.draw(g);
+        c.draw(g);
+        d.draw(g);
+        e.draw(g);
+        f.draw(g);
+        ge.draw(g);
+        sa.draw(g);
+
+        g.drawString("Highscore: ", 130, 50);
+
+        c.destroy();
+
+        Player player = new Player("Gott", 200, 450);
+        player.draw(g);
+
+        try {
+            this.refreshDisplay(g);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 
 
