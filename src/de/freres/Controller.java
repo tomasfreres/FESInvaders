@@ -2,6 +2,8 @@ package de.freres;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -34,7 +36,7 @@ public class Controller extends Canvas {
 
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
-        while(true){
+        //while(true){
             TimeUnit.MILLISECONDS.sleep(41);
 
             Graphics2D g2d = (Graphics2D) g;
@@ -58,7 +60,7 @@ public class Controller extends Canvas {
 
             player.draw(g);
         }
-    }
+    //}
 
 
     public void paint(Graphics g){
@@ -81,7 +83,4 @@ public class Controller extends Canvas {
             ex.printStackTrace();
         }
     }
-
-
-
 }
