@@ -33,7 +33,7 @@ public class Controller extends Canvas {
 
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
-        for(int i = 0; i <200; i++){
+        while(true){
             TimeUnit.MILLISECONDS.sleep(41);
 
             Graphics2D g2d = (Graphics2D) g;
