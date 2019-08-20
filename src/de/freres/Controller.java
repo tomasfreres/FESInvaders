@@ -28,7 +28,8 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
-        shots.add(new Shot(225,300, "up"));
+        shots.add(new Shot(225,400, "up"));
+        shots.add(new Shot(300,0, "down"));
     }
 
 
@@ -43,9 +44,16 @@ public class Controller extends Canvas {
             for (Alien k: aliens) {
                 k.draw(g);
             }
-            for(Shot k: shots){
-                k.shotPosition();
-                k.draw(g);
+
+            for(int i = 0; i < shots.size(); i++){
+                shots.get(i).shotPosition();
+
+                if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
+                    shots.get(i).draw(g);
+                }
+                else{
+                    shots.remove(i);
+                }
             }
 
             player.draw(g);
