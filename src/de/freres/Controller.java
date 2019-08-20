@@ -37,7 +37,7 @@ public class Controller extends Canvas {
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
         while(true){
-            TimeUnit.MILLISECONDS.sleep(41);
+            TimeUnit.MILLISECONDS.sleep(20);
 
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
@@ -77,16 +77,16 @@ public class Controller extends Canvas {
 
 
         aliens.add(new Alien(30, 50));
-        aliens.add(new Alien(50, 50));
         aliens.add(new Alien(70, 50));
-        aliens.add(new Alien(90, 50));
         aliens.add(new Alien(110, 50));
+        aliens.add(new Alien(150, 50));
+        aliens.add(new Alien(190, 50));
         aliens.add(new Alien(225, 20));
-        aliens.add(new Alien(30, 70));
-        aliens.add(new Alien(50, 70));
+        aliens.add(new Alien(30, 90));
+        aliens.add(new Alien(70, 90));
 
         player = new Player("Gott", 200, 450);
-        player.draw(g);
+        //player.draw(g);
 
         try {
             this.refreshDisplay(g);

@@ -1,6 +1,7 @@
 package de.freres;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Shot extends Token{
 
@@ -31,5 +32,10 @@ public class Shot extends Token{
         g2d.setStroke(stroke2);
 
         g2d.drawLine(posx,posy,posx,posy-10);
+    }
+
+    @Override
+    public BufferedImage getImage() {
+        return null;
     }
 }

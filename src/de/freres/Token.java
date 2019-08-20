@@ -2,6 +2,7 @@ package de.freres;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Token {
 
@@ -11,6 +12,7 @@ public abstract class Token {
     protected int posx;
     protected int posy;
     protected Graphics2D g2d;
+
 
     public Token(int posx, int posy){
         this.posx = posx;
@@ -54,7 +56,8 @@ public abstract class Token {
     }
 
     public void draw(Graphics g){
-
+        g2d = (Graphics2D) g;
+        g2d.drawImage(this.getImage(), posx, posy, 35, 35, null);
     }
 
     // implements Hitbox from Alien and Player
@@ -66,6 +69,8 @@ public abstract class Token {
            return false;
         }
     }
+
+    public abstract BufferedImage getImage();
 
     public int getX(){
 
