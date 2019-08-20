@@ -57,6 +57,16 @@ public abstract class Token {
 
     }
 
+    // implements Hitbox from Alien and Player
+    public boolean hitbox (Shot shot){
+        if(shot.getX() >= posx && shot.getX() < posx + 11){
+            livePoints--;
+            return true;    }
+        else {
+           return false;
+        }
+    }
+
     public int getX(){
 
         return posx;
