@@ -34,9 +34,11 @@ public class Controller extends Canvas {
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
         for(int i = 0; i <200; i++){
-            TimeUnit.MILLISECONDS.sleep(100);
-            field.repaint();
-            field.revalidate();
+            TimeUnit.MILLISECONDS.sleep(41);
+
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(Color.black);
+            g2d.fillRect(0,0,450,600);
 
             for (Alien k: aliens) {
                 k.draw(g);
@@ -46,7 +48,7 @@ public class Controller extends Canvas {
                 k.draw(g);
             }
 
-           // player.draw(g);
+            player.draw(g);
         }
     }
 
@@ -54,47 +56,22 @@ public class Controller extends Canvas {
     public void paint(Graphics g){
 
 
+        aliens.add(new Alien(30, 50));
+        aliens.add(new Alien(50, 50));
+        aliens.add(new Alien(70, 50));
+        aliens.add(new Alien(90, 50));
+        aliens.add(new Alien(110, 50));
+        aliens.add(new Alien(30, 70));
+        aliens.add(new Alien(50, 70));
+
+        player = new Player("Gott", 200, 450);
+        player.draw(g);
+
         try {
-            TimeUnit.MILLISECONDS.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        setBackground(Color.black);
-        Alien a = new Alien(30, 50);
-        Alien b = new Alien(50, 50);
-        Alien c = new Alien(70, 50);
-        Alien d = new Alien(90, 50);
-        Alien e = new Alien(110, 50);
-        Alien f = new Alien(30, 70);
-        Alien ge = new Alien(50, 70);
-
-
-        for(Shot k: shots){
-            k.draw(g);
-        }
-
-
-        a.draw(g);
-        b.draw(g);
-        c.draw(g);
-        d.draw(g);
-        e.draw(g);
-        f.draw(g);
-        ge.draw(g);
-        //sa.draw(g);
-
-        g.drawString("Highscore: ", 130, 50);
-
-        c.destroy();
-
-        //Player player = new Player("Gott", 200, 450);
-        //player.draw(g);
-
-     /*   try {
             this.refreshDisplay(g);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-        }*/
+        }
     }
 
 
