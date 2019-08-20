@@ -2,6 +2,8 @@ package de.freres;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Controller extends Canvas {
@@ -29,13 +31,13 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
-        shots.add(new Shot(225, 300, "up"));
-        this.keyListener = new KeyEventClass(this);
+        shots.add(new Shot(225,400, "up"));
+        shots.add(new Shot(300,0, "down"));
     }
-
     public void movePlayer(String move){
         player.move(move);
     }
+
 
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
@@ -49,15 +51,21 @@ public class Controller extends Canvas {
             for (Alien k: aliens) {
                 k.draw(g);
             }
-            for(Shot k: shots){
-                k.shotPosition();
 
+            for(int i = 0; i < shots.size(); i++){
+                shots.get(i).shotPosition();
 
-                k.draw(g); 
-}
+                if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
+                    shots.get(i).draw(g);
+                }
+                else{
+                    shots.remove(i);
+                }
+            }
 
             player.draw(g);
         }
+    }
 
 
     public void paint(Graphics g){
