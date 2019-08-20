@@ -10,6 +10,7 @@ public class Controller extends Canvas {
     private ArrayList<Alien> aliens;
     private ArrayList<Shot> shots;
     private Player player;
+    JFrame field;
     private KeyEventClass keyListener;
 
     public Controller() throws InterruptedException {
@@ -17,7 +18,7 @@ public class Controller extends Canvas {
         this.shots = new ArrayList<>();
         this.player = new Player("Gott", 350, 250);
 
-        JFrame field = new JFrame("FESInvaders");
+        field = new JFrame("FESInvaders");
 
         field.addKeyListener(new KeyEventClass(this));
         field.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,50 +39,39 @@ public class Controller extends Canvas {
 
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
-        //while(true){
-           //gamefield.getGraphicsContext().fillRect(0,0,450,600);
+        while(true){
+            TimeUnit.MILLISECONDS.sleep(41);
 
-         /*   for (Alien k: aliens) {
-                k.draw(gamefield.getGraphicsContext());
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setColor(Color.black);
+            g2d.fillRect(0,0,450,600);
+
+            for (Alien k: aliens) {
+                k.draw(g);
             }
             for(Shot k: shots){
                 k.shotPosition();
-                k.draw(gamefield.getGraphicsContext());
-            } */
 
 
+                k.draw(g); 
+}
 
-           // player.draw(g);
+            player.draw(g);
         }
 
 
     public void paint(Graphics g){
-        Alien a = new Alien(30, 50);
-        Alien b = new Alien(50, 50);
-        Alien c = new Alien(70, 50);
-        Alien d = new Alien(90, 50);
-        Alien e = new Alien(110, 50);
-        Alien f = new Alien(30, 70);
-        Alien ge = new Alien(50, 70);
 
 
-        Shot sa = new Shot(140,50, "up");
+        aliens.add(new Alien(30, 50));
+        aliens.add(new Alien(50, 50));
+        aliens.add(new Alien(70, 50));
+        aliens.add(new Alien(90, 50));
+        aliens.add(new Alien(110, 50));
+        aliens.add(new Alien(30, 70));
+        aliens.add(new Alien(50, 70));
 
-        setBackground(Color.BLACK);
-        a.draw(g);
-        b.draw(g);
-        c.draw(g);
-        d.draw(g);
-        e.draw(g);
-        f.draw(g);
-        ge.draw(g);
-        sa.draw(g);
-
-        g.drawString("Highscore: ", 130, 50);
-
-        c.destroy();
-
-        Player player = new Player("Gott", 200, 450);
+        player = new Player("Gott", 200, 450);
         player.draw(g);
 
         try {
