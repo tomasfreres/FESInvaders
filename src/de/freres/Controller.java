@@ -36,31 +36,41 @@ public class Controller extends Canvas {
 
 
     public void refreshDisplay(Graphics g) throws InterruptedException {
-        //while(true){
+        while(true){
             TimeUnit.MILLISECONDS.sleep(41);
 
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
             g2d.fillRect(0,0,450,600);
 
-            for (Alien k: aliens) {
-                k.draw(g);
-            }
-
             for(int i = 0; i < shots.size(); i++){
                 shots.get(i).shotPosition();
-
                 if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
-                    shots.get(i).draw(g);
+                    for(int j = 0; j < aliens.size(); j++) {
+                        if(aliens.get(j).hitbox(shots.get(i))){
+                            shots.remove(i);
+                        }
+                        else{
+                            shots.get(i).draw(g);
+                        }
+                    }
                 }
                 else{
                     shots.remove(i);
                 }
             }
 
+            for(int i = 0; i < aliens.size(); i++){
+                if(aliens.get(i).getLifePoints() == 0){
+                    aliens.remove(i);
+                }
+                else{
+                    aliens.get(i).draw(g);
+                }
+            }
             player.draw(g);
         }
-    //}
+    }
 
 
     public void paint(Graphics g){
@@ -71,6 +81,7 @@ public class Controller extends Canvas {
         aliens.add(new Alien(70, 50));
         aliens.add(new Alien(90, 50));
         aliens.add(new Alien(110, 50));
+        aliens.add(new Alien(225, 20));
         aliens.add(new Alien(30, 70));
         aliens.add(new Alien(50, 70));
 

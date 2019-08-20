@@ -5,7 +5,7 @@ import java.awt.*;
 
 public abstract class Token {
 
-    protected int livePoints;
+    protected int lifePoints;
     protected int shootFrequency;
     protected int damage;
     protected int posx;
@@ -59,8 +59,8 @@ public abstract class Token {
 
     // implements Hitbox from Alien and Player
     public boolean hitbox (Shot shot){
-        if(shot.getX() >= posx && shot.getX() < posx + 11){
-            livePoints--;
+        if(shot.getX() >= posx && shot.getX() < posx + 11 && shot.getY() == posy){
+            lifePoints--;
             return true;    }
         else {
            return false;
@@ -73,6 +73,9 @@ public abstract class Token {
     }
     public int getY(){
         return posy;
+    }
+    public int getLifePoints(){
+        return this.lifePoints;
     }
     public void setX(int x){
         posx = x;

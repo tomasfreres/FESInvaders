@@ -8,6 +8,7 @@ public class Alien extends Token {
     public Alien(int posx, int posy){
         super(posx, posy);
         scorePoints = 10;
+        lifePoints = 1;
     }
 
     @Override
