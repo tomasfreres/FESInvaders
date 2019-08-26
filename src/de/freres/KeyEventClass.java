@@ -2,56 +2,42 @@ package de.freres;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyAdapter;
-
-import java.awt.event.KeyEvent.*;
-
-import static java.awt.event.KeyEvent.*;
 
 public class KeyEventClass implements KeyListener {
-    private Controller conrtoller;
+    private boolean[] keys;
+    public boolean up, down, left, right;
 
-    public KeyEventClass(Controller conrtoller) {
-        this.conrtoller = conrtoller;
+    public KeyEventClass(){
+        System.out.println("Constructor");
+        keys = new boolean[256];
     }
 
-    public void keyTyped(KeyEvent e) {
-        System.out.println("KeyTyped: ");
-        if (e.getKeyChar() == KeyEvent.CHAR_UNDEFINED) {
-            System.out.println("Kein Unicode-Character gedr\u00FCckt!");
-        } else {
-            System.out.println(e.getKeyChar() + " gedr\u00FCckt!");
-        }
-        System.out.println("---");
-    }
+    public void update(Player player){
+        up = keys[KeyEvent.VK_W];
+        down = keys[KeyEvent.VK_S];
+        left = keys[KeyEvent.VK_A];
+        right = keys[KeyEvent.VK_D];
+        //System.out.println("" + left + "" + right + "" + up + "" + down);
+        player.move(left,right, up, down);
 
-    public void keyReleased(KeyEvent e) {
-        System.out.println("KeyReleased: ");
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            System.out.println("Programmabbruch!");
-            System.exit(0);
-        }
-        System.out.println("Taste: " + e.getKeyChar() + ", Code: " + e.getKeyCode());
-        System.out.println("---");
     }
-
     @Override
-    public void keyPressed(KeyEvent e){
-        switch (e.getKeyCode()) {
-                case VK_LEFT:
-                    this.conrtoller.movePlayer("left");
-                    break;
-                case VK_RIGHT:
-                    this.conrtoller.movePlayer("right");
-                    break;
+    public void keyPressed(KeyEvent e) {
+        keys[e.getKeyCode()] = true;
+        System.out.println("keyPressed " + e.getKeyCode() + " | " + KeyEvent.VK_W + " is " + keys[KeyEvent.VK_W]);
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (up = true){
+            keys[e.getKeyCode()] = true;
+        }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println("keyTyped");
 
-                case VK_UP:
-                    this.conrtoller.movePlayer("up");
-                    break;
-                case VK_DOWN:
-                    this.conrtoller.movePlayer("down");
-                    break;
-            }
+    }
+    public void reset(){
+        keys = new boolean[256];
     }
 }
-

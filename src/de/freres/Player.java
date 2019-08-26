@@ -24,30 +24,29 @@ public class Player extends Token {
 
         g2d.drawRect(posx, posy, 10, 10);
     }
-
-    public void move(String move){
-        if (move =="up"){
-            super.getY();
-            posy = posy + 10;
-            super.setY(posy);
-        }
-        if (move =="down"){
-            super.getY();
-            posy = posy + 10;
-            super.setY(posy);
-        }
-        if (move =="left"){
+    public void move (boolean left, boolean right, boolean up, boolean down) {
+        if (left == true) {
             super.getX();
             posx = posx - 10;
             super.setX(posx);
         }
-        if (move =="right"){
+
+        if (right == true) {
             super.getX();
             posx = posx + 10;
             super.setX(posx);
         }
-        System.out.println(move);
-        System.out.println(posx+posy);
-    }
 
+        if (up == true) {
+            super.getY();
+            posy = posy - 10;
+            super.setY(posy);
+        }
+
+        if (down == true) {
+            super.getY();
+            posy = posy + 10;
+            super.setY(posy);
+        }
+    }
 }
