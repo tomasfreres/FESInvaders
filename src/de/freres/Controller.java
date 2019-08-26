@@ -14,10 +14,12 @@ public class Controller extends Canvas {
     private ArrayList<Shot> shots;
     private Player player;
     JFrame field;
+    private ArrayList<Shield> shield;
 
     public Controller() throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
+        this.shield = new ArrayList<>();
         //this.player = new Player();
 
         field = new JFrame("FESInvaders");
@@ -68,6 +70,14 @@ public class Controller extends Canvas {
                     aliens.get(i).draw(g);
                 }
             }
+            for(int i = 0; i < shield.size(); i++){
+                if(shield.get(i).getLifePoints() == 0){
+                    shield.remove(i);
+                }
+                else{
+                    shield.get(i).draw(g);
+                }
+            }
             player.draw(g);
         }
     }
@@ -78,15 +88,22 @@ public class Controller extends Canvas {
 
         aliens.add(new Alien(30, 50));
         aliens.add(new Alien(70, 50));
-        aliens.add(new Alien(110, 50));
-        aliens.add(new Alien(150, 50));
-        aliens.add(new Alien(190, 50));
-        aliens.add(new Alien(225, 20));
+        aliens.add(new Alien(110,50));
+        aliens.add(new Alien(150,50));
+        aliens.add(new Alien(190,50));
+        aliens.add(new Alien(225,20));
         aliens.add(new Alien(30, 90));
         aliens.add(new Alien(70, 90));
 
         player = new Player("Gott", 200, 450);
         //player.draw(g);
+
+        shield.add(new Shield(100,360));
+        shield.add(new Shield(200,360));
+        shield.add(new Shield(300,360));
+
+
+
 
         try {
             this.refreshDisplay(g);
