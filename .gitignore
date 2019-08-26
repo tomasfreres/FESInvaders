@@ -1,6 +1,7 @@
 out/
 
 .idea/
+workspace.xml
 *.iml
 *.iws
 *.ipr
