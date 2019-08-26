@@ -2,6 +2,8 @@ package de.freres;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ public class Controller extends Canvas {
     public Controller() throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
-        //this.player = new Player();
 
         field = new JFrame("FESInvaders");
 
@@ -30,13 +31,29 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
+        aliens.add(new Alien(30, 50));
+        aliens.add(new Alien(70, 50));
+        aliens.add(new Alien(110, 50));
+        aliens.add(new Alien(150, 50));
+        aliens.add(new Alien(190, 50));
+        aliens.add(new Alien(225, 20));
+        aliens.add(new Alien(30, 90));
+        aliens.add(new Alien(70, 90));
+
         shots.add(new Shot(225,400, "up"));
         shots.add(new Shot(300,0, "down"));
+
+        this.player = new Player("Ole", 225, 500);
+
+        refreshDisplay();
     }
 
 
-    public void refreshDisplay(Graphics g) throws InterruptedException {
+    public void refreshDisplay() throws InterruptedException {
+
         while(true){
+            Graphics g = this.getGraphics();
+            KeyAdapter keyAdapter = new KeyAdapter();
             TimeUnit.MILLISECONDS.sleep(20);
 
             Graphics2D g2d = (Graphics2D) g;
@@ -69,29 +86,8 @@ public class Controller extends Canvas {
                 }
             }
             player.draw(g);
+            g.dispose();
         }
-    }
 
-
-    public void paint(Graphics g){
-
-
-        aliens.add(new Alien(30, 50));
-        aliens.add(new Alien(70, 50));
-        aliens.add(new Alien(110, 50));
-        aliens.add(new Alien(150, 50));
-        aliens.add(new Alien(190, 50));
-        aliens.add(new Alien(225, 20));
-        aliens.add(new Alien(30, 90));
-        aliens.add(new Alien(70, 90));
-
-        player = new Player("Gott", 200, 450);
-        //player.draw(g);
-
-        try {
-            this.refreshDisplay(g);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
     }
 }

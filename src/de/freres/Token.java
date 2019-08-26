@@ -88,5 +88,13 @@ public abstract class Token {
     public void setY(int y){
         posy = y;
     }
+    public void move(String dir){
+        if(dir == "right"){
+            posx = posx + 10;
+        }
+        if(dir == "left"){
+            posx = posx - 10;
+        }
+    }
 
 }

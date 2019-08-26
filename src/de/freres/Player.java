@@ -25,23 +25,9 @@ public class Player extends Token {
     }
 
     @Override
-    public void draw(Graphics g){
-        g2d = (Graphics2D) g;
-        Stroke stroke1 = new BasicStroke(2f);
-
-        g2d.setColor(Color.BLUE);
-        g2d.setStroke(stroke1);
-
-        g2d.drawRect(posx, posy, 10, 10);
-    }
-
-    @Override
     public BufferedImage getImage() {
         return Player.image;
     }
 
-    public void move(){
-
-    }
 
 }
