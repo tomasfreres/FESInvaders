@@ -24,6 +24,10 @@ public class Player extends Token {
         lifePoints = 3;
     }
 
+    public Shot shoot(){
+        return new Shot(posx, posy, "up");
+    }
+
     @Override
     public BufferedImage getImage() {
         return Player.image;

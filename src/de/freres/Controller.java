@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class Controller extends Canvas {
     private ArrayList<Alien> aliens;
     private ArrayList<Shot> shots;
     private Player player;
+    private static boolean right;
+    private static boolean left;
+    private static boolean space;
     JFrame field;
     private ArrayList<Shield> shield;
 
@@ -43,8 +47,9 @@ public class Controller extends Canvas {
         aliens.add(new Alien(30, 90));
         aliens.add(new Alien(70, 90));
 
-        shots.add(new Shot(225,400, "up"));
-        shots.add(new Shot(300,0, "down"));
+        shield.add(new Shield(100,360));
+        shield.add(new Shield(200,360));
+        shield.add(new Shield(300,360));
 
         this.player = new Player("Ole", 225, 500);
 
@@ -56,22 +61,63 @@ public class Controller extends Canvas {
 
         while(true){
             Graphics g = this.getGraphics();
-            KeyAdapter keyAdapter = new KeyAdapter();
-            TimeUnit.MILLISECONDS.sleep(20);
+            TimeUnit.MILLISECONDS.sleep(50);
 
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
             g2d.fillRect(0,0,450,600);
 
+
+
+            field.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    switch (e.getKeyChar()) {
+                        case 'd':
+                            Controller.right = true;
+                            break;
+                        case 'a':
+                            Controller.left = true;
+                            break;
+                        case 'v': Controller.space = true;
+                            break;
+                    }
+                }
+            });
+
+            if(right){
+                player.move("right");
+            }
+            if(left){
+                player.move("left");
+            }
+            if(space){
+                shots.add(player.shoot());
+            }
+
+            Controller.right = false;
+            Controller.left = false;
+
             for(int i = 0; i < shots.size(); i++){
                 shots.get(i).shotPosition();
                 if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
+
                     for(int j = 0; j < aliens.size(); j++) {
-                        if(aliens.get(j).hitbox(shots.get(i))){
-                            shots.remove(i);
+                        if(!shots.isEmpty() && i < shots.size()) {
+                            if (aliens.get(j).hitbox(shots.get(i))) {
+                                shots.remove(i);
+                            } else {
+                                shots.get(i).draw(g);
+                            }
                         }
-                        else{
-                            shots.get(i).draw(g);
+                    }
+                    for(int j = 0; j < shield.size(); j++) {
+                        if(!shots.isEmpty() && i < shots.size()) {
+                            if (shield.get(j).hitbox(shots.get(i))) {
+                                shots.remove(i);
+                            } else {
+                                shots.get(i).draw(g);
+                            }
                         }
                     }
                 }
@@ -97,6 +143,7 @@ public class Controller extends Canvas {
                 }
             }
             player.draw(g);
+            space = false;
             g.dispose();
         }
 

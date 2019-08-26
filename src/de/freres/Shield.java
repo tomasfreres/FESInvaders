@@ -24,7 +24,7 @@ public class Shield extends Token{
 
     @Override
     public boolean hitbox(Shot shot) {
-        if(shot.getX() >= posx && shot.getX() < posx + 15 && shot.getY() == posy){
+        if(shot.getX() >= posx && shot.getX() < posx + 40 && shot.getY() == posy){
             lifePoints--;
             return true;    }
         else {

@@ -19,38 +19,6 @@ public abstract class Token {
         this.posy = posy;
     }
 
-    public void shoot(String shooter, Graphics g){
-        //Position von Raumschiff bzw. Alien bestimmen
-
-        posx = getX();
-        posy = getY();
-
-        //Von dort ausgehend ein Objekt kreiieren
-
-        g2d = (Graphics2D) g;
-        Stroke stroke1 = new BasicStroke(2f);
-
-        g2d.setColor(Color.WHITE);
-        g2d.setStroke(stroke1);
-
-        g2d.fillRect(posx, posy, 10, 10);
-
-        //Dieses in Richtung des Gegners senden
-        if(shooter=="player") {
-            for (int i = 0; i < 300; i++) {
-                posx++;
-                posy++;
-            }
-        }
-        else {
-            for (int i = 0; i < 300; i++) {
-                posx--;
-                posy--;
-            }
-        }
-
-    }
-
     public void getDamage(int damage){
         this.damage -= damage;
     }
@@ -62,8 +30,9 @@ public abstract class Token {
 
     // implements Hitbox from Alien and Player
     public boolean hitbox (Shot shot){
-        if(shot.getX() >= posx && shot.getX() < posx + 11 && shot.getY() == posy){
+        if(shot.getX() >= posx && shot.getX() < posx + 35 && shot.getY() == posy){
             lifePoints--;
+            System.out.println("Treffer");
             return true;    }
         else {
            return false;
@@ -90,10 +59,10 @@ public abstract class Token {
     }
     public void move(String dir){
         if(dir == "right"){
-            posx = posx + 10;
+            posx = posx + 25;
         }
         if(dir == "left"){
-            posx = posx - 10;
+            posx = posx - 25;
         }
     }
 
