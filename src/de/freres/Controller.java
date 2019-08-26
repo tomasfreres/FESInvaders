@@ -16,10 +16,13 @@ public class Controller extends Canvas {
     private ArrayList<Shot> shots;
     private Player player;
     JFrame field;
+    private ArrayList<Shield> shield;
 
     public Controller() throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
+        this.shield = new ArrayList<>();
+        //this.player = new Player();
 
         field = new JFrame("FESInvaders");
 
@@ -83,6 +86,14 @@ public class Controller extends Canvas {
                 }
                 else{
                     aliens.get(i).draw(g);
+                }
+            }
+            for(int i = 0; i < shield.size(); i++){
+                if(shield.get(i).getLifePoints() == 0){
+                    shield.remove(i);
+                }
+                else{
+                    shield.get(i).draw(g);
                 }
             }
             player.draw(g);
