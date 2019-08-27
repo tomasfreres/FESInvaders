@@ -151,6 +151,18 @@ public class Controller extends Canvas {
                 }
             }
 
+            if (aliens.size()<1){
+                aliens.add(new Alien(30, 50));
+                aliens.add(new Alien(70, 50));
+                aliens.add(new Alien(110, 50));
+                aliens.add(new Alien(150, 50));
+                aliens.add(new Alien(190, 50));
+                aliens.add(new Alien(225, 20));
+                aliens.add(new Alien(30, 90));
+                aliens.add(new Alien(70, 90));
+
+            }
+
             //--------------------------------------------- Zeichnet Spieler
             player.draw(g);
             space = false;
