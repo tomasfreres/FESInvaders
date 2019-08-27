@@ -7,7 +7,16 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Token {
+    public String getName() {
+        return name;
+    }
+
     private String name;
+
+    public int getScore() {
+        return score;
+    }
+
     private int score;
     static protected BufferedImage image;
     static {
@@ -33,5 +42,13 @@ public class Player extends Token {
         return Player.image;
     }
 
+    public void settleScore () {
+        score += 10;
+        System.out.println("Score:" + score);
+    }
 
+    public void payShot () {
+        score -= 1 ;
+        System.out.println("Score" + score);
+    }
 }

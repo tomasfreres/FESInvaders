@@ -53,6 +53,8 @@ public class Controller extends Canvas {
 
         this.player = new Player("Ole", 225, 500);
 
+
+
         refreshDisplay();
     }
 
@@ -66,8 +68,9 @@ public class Controller extends Canvas {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
             g2d.fillRect(0,0,450,600);
-
-
+            g2d.setColor(Color.white);
+            g2d.drawString("Player: " + player.getName(),10,20);
+            g2d.drawString("Score: " +player.getScore(), 10, 40);
 
             field.addKeyListener(new KeyAdapter() {
                 @Override
@@ -93,6 +96,7 @@ public class Controller extends Canvas {
             }
             if(space){
                 shots.add(player.shoot());
+                player.payShot();
             }
 
             Controller.right = false;
@@ -129,6 +133,7 @@ public class Controller extends Canvas {
             for(int i = 0; i < aliens.size(); i++){
                 if(aliens.get(i).getLifePoints() == 0){
                     aliens.remove(i);
+                    player.settleScore();
                 }
                 else{
                     aliens.get(i).draw(g);
@@ -144,6 +149,7 @@ public class Controller extends Canvas {
             }
             player.draw(g);
             space = false;
+
             g.dispose();
         }
 
