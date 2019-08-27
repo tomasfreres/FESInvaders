@@ -28,9 +28,7 @@ public class Controller extends Canvas {
     private ArrayList<Shield> shield;
 
     public Controller() throws InterruptedException {
-        this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
-        this.shield = new ArrayList<>();
         //this.player = new Player();
 
         field = new JFrame("FESInvaders");
@@ -43,10 +41,13 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
+        this.player = new Player("Ole", 225, 500);
+
         start();
     }
 
     public void start(){
+        aliens = new ArrayList<>();
         aliens.add(new Alien(30, 50));
         aliens.add(new Alien(70, 50));
         aliens.add(new Alien(110, 50));
@@ -56,11 +57,15 @@ public class Controller extends Canvas {
         aliens.add(new Alien(30, 90));
         aliens.add(new Alien(70, 90));
 
+        shield = new ArrayList<>();
         shield.add(new Shield(100,360));
         shield.add(new Shield(200,360));
         shield.add(new Shield(300,360));
 
-        this.player = new Player("Ole", 225, 500);
+        shots = new ArrayList<>();
+
+       this.player.setX(225);
+       this.player.setY(500);
 
 
         try {
