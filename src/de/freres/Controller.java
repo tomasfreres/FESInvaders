@@ -8,7 +8,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +43,10 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
+        start();
+    }
+
+    public void start(){
         aliens.add(new Alien(30, 50));
         aliens.add(new Alien(70, 50));
         aliens.add(new Alien(110, 50));
@@ -61,11 +67,14 @@ public class Controller extends Canvas {
             refreshDisplay();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
     }
 
-
-    public void refreshDisplay() throws InterruptedException, IOException {
+    public void refreshDisplay() throws InterruptedException, IOException, URISyntaxException {
 
         while(true){
             Graphics g = this.getGraphics();
@@ -167,7 +176,16 @@ public class Controller extends Canvas {
             player.draw(g);}
             else{
                 g2d.drawImage(ImageIO.read(Alien.class.getResource("/gameover.jpg")), 50, 100, 300, 300, null);
-                break;
+
+                String option[]= {"Neustart", "Beenden"};
+
+                if(JOptionPane.showOptionDialog(null, "Wollen Sie erneut spielen?", "Game Over", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.YES_NO_CANCEL_OPTION, null, option, option[0] )== JOptionPane.YES_OPTION){
+
+                        start();
+                }else{
+                    break;
+                }
             }
             space = false;
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
