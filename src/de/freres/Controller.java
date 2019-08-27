@@ -42,7 +42,7 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
-        this.player = new Player("Ole", 225, 500);
+        this.player = new Player(eingabe, 225, 500);
 
         start();
     }
@@ -63,11 +63,6 @@ public class Controller extends Canvas {
         shield.add(new Shield(200,360));
         shield.add(new Shield(300,360));
 
-        this.player = new Player(eingabe, 225, 500);
-
-
-
-        refreshDisplay();
 
        this.player.setX(225);
        this.player.setY(500);
