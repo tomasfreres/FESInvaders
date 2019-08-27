@@ -1,5 +1,6 @@
 package de.freres;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -7,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +21,7 @@ public class Controller extends Canvas {
     private static boolean right;
     private static boolean left;
     private static boolean space;
+
     JFrame field;
     private ArrayList<Shield> shield;
 
@@ -54,12 +57,15 @@ public class Controller extends Canvas {
         this.player = new Player("Ole", 225, 500);
 
 
-
-        refreshDisplay();
+        try {
+            refreshDisplay();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public void refreshDisplay() throws InterruptedException {
+    public void refreshDisplay() throws InterruptedException, IOException {
 
         while(true){
             Graphics g = this.getGraphics();
@@ -151,8 +157,18 @@ public class Controller extends Canvas {
                 }
             }
 
+
+
             //--------------------------------------------- Zeichnet Spieler
-            player.draw(g);
+
+
+
+            if (player.getLifePoints() > 0){
+            player.draw(g);}
+            else{
+                g2d.drawImage(ImageIO.read(Alien.class.getResource("/gameover.jpg")), 50, 100, 300, 300, null);
+                break;
+            }
             space = false;
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             g.dispose();

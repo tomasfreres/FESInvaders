@@ -30,7 +30,7 @@ public class Player extends Token {
     public Player(String name, int posx, int posy){
         super(posx, posy);
         this.name = name;
-        lifePoints = 3;
+        lifePoints = 0;
     }
 
     public Shot shoot(){
@@ -51,4 +51,5 @@ public class Player extends Token {
         score -= 1 ;
         System.out.println("Score" + score);
     }
+
 }
