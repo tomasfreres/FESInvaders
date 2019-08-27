@@ -34,7 +34,7 @@ public class Player extends Token {
     }
 
     public Shot shoot(){
-        return new Shot(posx, posy, "up");
+        return new Shot(posx + 17, posy, "up");
     }
 
     @Override
