@@ -22,7 +22,7 @@ public class Controller extends Canvas {
     JFrame field;
     private ArrayList<Shield> shield;
 
-    public Controller() throws InterruptedException {
+    public Controller(String eingabe) throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
         this.shield = new ArrayList<>();
@@ -51,7 +51,7 @@ public class Controller extends Canvas {
         shield.add(new Shield(200,360));
         shield.add(new Shield(300,360));
 
-        this.player = new Player("Ole", 225, 500);
+        this.player = new Player(eingabe, 225, 500);
 
 
 
