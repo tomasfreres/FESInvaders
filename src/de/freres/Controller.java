@@ -91,8 +91,9 @@ public class Controller extends Canvas {
             g2d.setColor(Color.black);
             g2d.fillRect(0,0,450,600);
             g2d.setColor(Color.white);
-            g2d.drawString("Player: " + player.getName(),10,20);
-            g2d.drawString("Score: " +player.getScore(), 10, 40);
+            g2d.drawString("Player: " + player.getName(),20,20);
+            g2d.drawString("Score: " +player.getScore(), 20, 40);
+            g2d.drawString("Lives: " + player.getLifePoints(), 370,20);
 
             field.addKeyListener(new KeyAdapter() {
                 @Override
@@ -174,6 +175,17 @@ public class Controller extends Canvas {
             }
 
 
+            if (aliens.size()<1){
+                aliens.add(new Alien(30, 50));
+                aliens.add(new Alien(70, 50));
+                aliens.add(new Alien(110, 50));
+                aliens.add(new Alien(150, 50));
+                aliens.add(new Alien(190, 50));
+                aliens.add(new Alien(225, 20));
+                aliens.add(new Alien(30, 90));
+                aliens.add(new Alien(70, 90));
+
+            }
 
             //--------------------------------------------- Zeichnet Spieler
 
