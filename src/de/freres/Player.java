@@ -21,7 +21,7 @@ public class Player extends Token {
     static protected BufferedImage image;
     static {
         try {
-            image = ImageIO.read(Alien.class.getResource("/SpaceShip.bmp"));
+            image = ImageIO.read(Player.class.getResource("/SpaceShip.bmp"));
         } catch (IOException e) {
             e.printStackTrace();
         }

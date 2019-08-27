@@ -5,3 +5,4 @@ workspace.xml
 *.iml
 *.iws
 *.ipr
+.DS_Store
