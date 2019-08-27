@@ -23,6 +23,10 @@ public class Alien extends Token {
         lifePoints = 1;
     }
 
+    public Shot shoot(){
+            return new Shot(posx + 17, posy, "down");
+    }
+
     @Override
     public BufferedImage getImage() {
         return Alien.image;

@@ -148,6 +148,7 @@ public class Controller extends Canvas {
                             }
                         }
                     }
+                    player.hitbox(shots.get(i));
                 }
                 else{
                     shots.remove(i);
@@ -189,12 +190,10 @@ public class Controller extends Canvas {
 
             //--------------------------------------------- Zeichnet Spieler
 
-
-
             if (player.getLifePoints() > 0){
             player.draw(g);}
             else{
-                g2d.drawImage(ImageIO.read(Alien.class.getResource("/gameover.jpg")), 50, 100, 300, 300, null);
+                g2d.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 0, 450, 600, null);
 
                 String option[]= {"Neustart", "Beenden"};
 
@@ -207,9 +206,19 @@ public class Controller extends Canvas {
                 }
             }
             space = false;
+            letAliensShoot();
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             g.dispose();
         }
 
+    }
+
+    public void letAliensShoot(){
+        for (Alien k: aliens
+             ) {
+            if(Math.random() > 0.99){
+                shots.add(k.shoot());
+            }
+        }
     }
 }
