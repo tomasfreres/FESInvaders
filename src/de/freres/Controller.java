@@ -98,6 +98,7 @@ public class Controller extends Canvas {
             Controller.right = false;
             Controller.left = false;
 
+            //--------------------------------------------------------- Berechnet Treffer
             for(int i = 0; i < shots.size(); i++){
                 shots.get(i).shotPosition();
                 if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
@@ -126,6 +127,7 @@ public class Controller extends Canvas {
                 }
             }
 
+            //--------------------------------------------- Löscht Alien wenn Lifepoints = 0
             for(int i = 0; i < aliens.size(); i++){
                 if(aliens.get(i).getLifePoints() == 0){
                     aliens.remove(i);
@@ -134,6 +136,7 @@ public class Controller extends Canvas {
                     aliens.get(i).draw(g);
                 }
             }
+            //--------------------------------------------- Löscht Schild wenn Lifepoints = 0
             for(int i = 0; i < shield.size(); i++){
                 if(shield.get(i).getLifePoints() == 0){
                     shield.remove(i);
@@ -142,8 +145,11 @@ public class Controller extends Canvas {
                     shield.get(i).draw(g);
                 }
             }
+
+            //--------------------------------------------- Zeichnet Spieler
             player.draw(g);
             space = false;
+            //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             g.dispose();
         }
 
