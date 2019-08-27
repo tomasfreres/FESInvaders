@@ -71,7 +71,7 @@ public class Controller extends Canvas {
             g2d.setColor(Color.white);
             g2d.drawString("Player: " + player.getName(),20,20);
             g2d.drawString("Score: " +player.getScore(), 20, 40);
-            g2d.drawString("Lives:" + player.getLifePoints(), 350,20);
+            g2d.drawString("Lives: " + player.getLifePoints(), 370,20);
 
             field.addKeyListener(new KeyAdapter() {
                 @Override
@@ -151,6 +151,7 @@ public class Controller extends Canvas {
                     shield.get(i).draw(g);
                 }
             }
+
 
             if (aliens.size()<1){
                 aliens.add(new Alien(30, 50));
