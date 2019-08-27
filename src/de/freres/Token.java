@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 public abstract class Token {
 
+
     protected int lifePoints;
     protected int shootFrequency;
     protected int damage;
@@ -50,6 +51,9 @@ public abstract class Token {
     }
     public int getLifePoints(){
         return this.lifePoints;
+    }
+    public void setLifePoints(int lifePoints) {
+        this.lifePoints = lifePoints;
     }
     public void setX(int x){
         posx = x;

@@ -66,6 +66,8 @@ public class Controller extends Canvas {
 
        this.player.setX(225);
        this.player.setY(500);
+       this.player.setScore(0);
+       this.player.setLifePoints(3);
 
 
         try {

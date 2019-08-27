@@ -17,6 +17,10 @@ public class Player extends Token {
         return score;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     private int score;
     static protected BufferedImage image;
     static {
@@ -30,7 +34,7 @@ public class Player extends Token {
     public Player(String name, int posx, int posy){
         super(posx, posy);
         this.name = name;
-        lifePoints = 0;
+        lifePoints = 3;
     }
 
     public Shot shoot(){
