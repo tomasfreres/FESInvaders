@@ -1,5 +1,6 @@
 package de.freres;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -7,6 +8,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -19,13 +23,13 @@ public class Controller extends Canvas {
     private static boolean right;
     private static boolean left;
     private static boolean space;
+
     JFrame field;
     private ArrayList<Shield> shield;
 
     public Controller(String eingabe) throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
-        this.shield = new ArrayList<>();
         //this.player = new Player();
 
         field = new JFrame("FESInvaders");
@@ -38,6 +42,13 @@ public class Controller extends Canvas {
 
         field.setVisible(true);
 
+        this.player = new Player("Ole", 225, 500);
+
+        start();
+    }
+
+    public void start(){
+        aliens = new ArrayList<>();
         aliens.add(new Alien(30, 50));
         aliens.add(new Alien(70, 50));
         aliens.add(new Alien(110, 50));
@@ -47,6 +58,7 @@ public class Controller extends Canvas {
         aliens.add(new Alien(30, 90));
         aliens.add(new Alien(70, 90));
 
+        shield = new ArrayList<>();
         shield.add(new Shield(100,360));
         shield.add(new Shield(200,360));
         shield.add(new Shield(300,360));
@@ -56,10 +68,23 @@ public class Controller extends Canvas {
 
 
         refreshDisplay();
+
+       this.player.setX(225);
+       this.player.setY(500);
+
+
+        try {
+            refreshDisplay();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
-
-    public void refreshDisplay() throws InterruptedException {
+    public void refreshDisplay() throws InterruptedException, IOException, URISyntaxException {
 
         while(true){
             Graphics g = this.getGraphics();
@@ -151,8 +176,27 @@ public class Controller extends Canvas {
                 }
             }
 
+
+
             //--------------------------------------------- Zeichnet Spieler
-            player.draw(g);
+
+
+
+            if (player.getLifePoints() > 0){
+            player.draw(g);}
+            else{
+                g2d.drawImage(ImageIO.read(Alien.class.getResource("/gameover.jpg")), 50, 100, 300, 300, null);
+
+                String option[]= {"Neustart", "Beenden"};
+
+                if(JOptionPane.showOptionDialog(null, "Wollen Sie erneut spielen?", "Game Over", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.YES_NO_CANCEL_OPTION, null, option, option[0] )== JOptionPane.YES_OPTION){
+
+                        start();
+                }else{
+                    break;
+                }
+            }
             space = false;
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             g.dispose();
