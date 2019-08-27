@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Token {
+    public String getName() {
+        return name;
+    }
+
     private String name;
 
     public int getScore() {

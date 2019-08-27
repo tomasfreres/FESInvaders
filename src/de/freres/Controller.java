@@ -69,8 +69,8 @@ public class Controller extends Canvas {
             g2d.setColor(Color.black);
             g2d.fillRect(0,0,450,600);
             g2d.setColor(Color.white);
-            g2d.drawString("Score: " +player.getScore(), 20, 20);
-
+            g2d.drawString("Player: " + player.getName(),10,20);
+            g2d.drawString("Score: " +player.getScore(), 10, 40);
 
             field.addKeyListener(new KeyAdapter() {
                 @Override
