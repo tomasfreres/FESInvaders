@@ -18,6 +18,11 @@ public class Controller extends Canvas {
 
 
     private ArrayList<Alien> aliens;
+
+    private ArrayList<Alien> alienRowOne;
+    private ArrayList<Alien> alienRowTwo;
+
+
     private ArrayList<Shot> shots;
     private Player player;
     private static boolean right;
@@ -48,15 +53,16 @@ public class Controller extends Canvas {
     }
 
     public void start(){
-        aliens = new ArrayList<>();
-        aliens.add(new Alien(30, 50));
-        aliens.add(new Alien(70, 50));
-        aliens.add(new Alien(110, 50));
-        aliens.add(new Alien(150, 50));
-        aliens.add(new Alien(190, 50));
-        aliens.add(new Alien(225, 20));
-        aliens.add(new Alien(30, 90));
-        aliens.add(new Alien(70, 90));
+
+
+        alienRowOne = new ArrayList<>();
+        alienRowTwo = new ArrayList<>();
+
+            for (int i =50 ;  i < 360; i += 40 ) {
+                alienRowOne.add(new Alien (i, 100));
+                alienRowTwo.add(new Alien (i, 50));
+             }
+
 
         shield = new ArrayList<>();
         shield.add(new Shield(100,360));
@@ -130,15 +136,29 @@ public class Controller extends Canvas {
                 shots.get(i).shotPosition();
                 if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
 
-                    for(int j = 0; j < aliens.size(); j++) {
+                    for(int j = 0; j < alienRowOne.size(); j++) {
                         if(!shots.isEmpty() && i < shots.size()) {
-                            if (aliens.get(j).hitbox(shots.get(i))) {
+                            if (alienRowOne.get(j).hitbox(shots.get(i))) {
                                 shots.remove(i);
                             } else {
                                 shots.get(i).draw(g);
                             }
+
+
                         }
                     }
+
+                    for(int k = 0; k < alienRowTwo.size(); k++) {
+                        if(!shots.isEmpty() && i < shots.size()) {
+                            if (alienRowTwo.get(k).hitbox(shots.get(i))) {
+                                shots.remove(i);
+                            } else {
+                                shots.get(i).draw(g);
+                            }
+
+                        }
+                    }
+
                     for(int j = 0; j < shield.size(); j++) {
                         if(!shots.isEmpty() && i < shots.size()) {
                             if (shield.get(j).hitbox(shots.get(i))) {
@@ -160,15 +180,28 @@ public class Controller extends Canvas {
             }
 
             //--------------------------------------------- Löscht Alien wenn Lifepoints = 0
-            for(int i = 0; i < aliens.size(); i++){
-                if(aliens.get(i).getLifePoints() == 0){
-                    aliens.remove(i);
+            for(int i = 0; i < alienRowOne.size(); i++){
+                if(alienRowOne.get(i).getLifePoints() == 0){
+                    alienRowOne.remove(i);
                     player.settleScore();
                 }
                 else{
-                    aliens.get(i).draw(g);
+                    alienRowOne.get(i).draw(g);
+                }
+
+            }
+
+
+            for (int i = 0; i < alienRowTwo.size(); i++) {
+                if (alienRowTwo.get(i).getLifePoints() == 0) {
+                    alienRowTwo.remove(i);
+                    player.settleScore();
+                }
+                else {
+                    alienRowTwo.get(i).draw(g);
                 }
             }
+
             //--------------------------------------------- Löscht Schild wenn Lifepoints = 0
             for(int i = 0; i < shield.size(); i++){
                 if(shield.get(i).getLifePoints() == 0){
@@ -180,17 +213,17 @@ public class Controller extends Canvas {
             }
 
 
-            if (aliens.size()<1){
-                aliens.add(new Alien(30, 50));
-                aliens.add(new Alien(70, 50));
-                aliens.add(new Alien(110, 50));
-                aliens.add(new Alien(150, 50));
-                aliens.add(new Alien(190, 50));
-                aliens.add(new Alien(225, 20));
-                aliens.add(new Alien(30, 90));
-                aliens.add(new Alien(70, 90));
+            //---------------------------------------------Spawnt Aliens neu
+
+            if (alienRowTwo.size()== 0) {
+
+                for (int i =50 ;  i < 360; i += 40 ) {
+                    alienRowOne.add(new Alien (i, 100));
+                    alienRowTwo.add(new Alien (i, 50));
+                }
 
             }
+
 
             //--------------------------------------------- Zeichnet Spieler
 
@@ -218,11 +251,22 @@ public class Controller extends Canvas {
     }
 
     public void letAliensShoot(){
-        for (Alien k: aliens
-             ) {
-            if(Math.random() > 0.99){
-                shots.add(k.shoot());
+        if (alienRowOne.size() > 0) {
+            for (Alien k : alienRowOne
+            ) {
+                if (Math.random() > 0.99) {
+                    shots.add(k.shoot());
+                }
+            }
+        }
+        else {
+            for (Alien k: alienRowTwo){
+                if (Math.random() > 0.99) {
+                    shots.add(k.shoot());
             }
         }
     }
+
+    }
+
 }
