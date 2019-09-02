@@ -25,6 +25,7 @@ public class Controller extends Canvas {
     private static boolean right;
     private static boolean left;
     private static boolean space;
+    private double shootprobebility = 0.99;
 
     JFrame field;
     private ArrayList<Shield> shield;
@@ -243,11 +244,16 @@ public class Controller extends Canvas {
 
             }
 
+<<<<<<< Updated upstream
             if(alienRowOne.isEmpty()){
                 for (Alien alien: alienRowTwo
                      ) {
                     alien.setY(100);
                 }
+=======
+
+                shootprobebility = shootprobebility - 0.01;
+>>>>>>> Stashed changes
             }
 
 
@@ -269,6 +275,7 @@ shots.clear();
                 }
             }
             space = false;
+
             letAliensShoot();
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             graphicsContext.drawImage(bimage, 0,0, null);
@@ -282,6 +289,7 @@ shots.clear();
      * Lets every alien shoot with an probability of 0,01%
      */
     public void letAliensShoot(){
+<<<<<<< Updated upstream
         if (alienRowOne.size() > 0) {
             for (Alien k : alienRowOne
             ) {
@@ -294,6 +302,12 @@ shots.clear();
             for (Alien k: alienRowTwo){
                 if (Math.random() > 0.99) {
                     shots.add(k.shoot());
+=======
+        for (Alien k: aliens
+             ) {
+            if(Math.random() > shootprobebility){
+                shots.add(k.shoot());
+>>>>>>> Stashed changes
             }
         }
     }
