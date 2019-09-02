@@ -285,13 +285,13 @@ public class Controller extends Canvas {
         if (alienRowOne.size() > 0) {
             for (Alien k : alienRowOne
             ) {
-                if (Math.random() > 0.99) {
+                if (Math.random() > shootprobebility) {
                     shots.add(k.shoot());
                 }
             }
         } else {
             for (Alien k : alienRowTwo) {
-                if (Math.random() > 0.99) {
+                if (Math.random() > shootprobebility) {
                     shots.add(k.shoot());
 
                 }
