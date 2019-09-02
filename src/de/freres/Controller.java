@@ -276,6 +276,7 @@ public class Controller extends Canvas {
             space = false;
 
 
+            //---------------------------------------------- Verwaltet Bewegung der Aliens
 
             if (moveIt){
                 letAliensMoveLeft();
@@ -307,6 +308,7 @@ public class Controller extends Canvas {
                     moveItToTheBeat=true;
                 }
             }
+
 
 
             letAliensShoot();
