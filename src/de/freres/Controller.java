@@ -26,6 +26,8 @@ public class Controller extends Canvas {
     private static boolean left;
     private static boolean space;
     private double shootprobebility = 0.99;
+    private boolean moveIt = false;
+    private boolean moveItToTheBeat = true;
 
     JFrame field;
     private ArrayList<Shield> shield;
@@ -273,7 +275,43 @@ public class Controller extends Canvas {
             }
             space = false;
 
+
+
+            if (moveIt){
+                letAliensMoveLeft();
+                if (!alienRowOne.isEmpty()) {
+                    if (alienRowOne.get(0).getX() <= 0) {
+                        moveIt = false;
+                    }
+                }
+
+            } else {
+                letAliensMoveRight();
+                if (!alienRowOne.isEmpty()) {
+                    if (alienRowOne.get(alienRowOne.size() - 1).getX() >= 400) {
+                        moveIt = true;
+                    }
+                }
+            }
+
+
+            if (moveItToTheBeat){
+                letOtherAliensMoveLeft();
+                if (alienRowTwo.get(0).getX() <= 0) {
+                    moveItToTheBeat=false;
+                }
+
+            }else {
+                letOtherAliensMoveRight();
+                if (alienRowTwo.get(alienRowTwo.size()-1).getX() >= 400){
+                    moveItToTheBeat=true;
+                }
+            }
+
+
             letAliensShoot();
+
+
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
             graphicsContext.drawImage(bimage, 0, 0, null);
             graphicsContext.dispose();
@@ -301,6 +339,30 @@ public class Controller extends Canvas {
                 }
 
             }
+        }
+    }
+
+    public void letAliensMoveLeft() {
+            for (Alien k : alienRowOne) {
+                k.tinyMove("left");
+            }
+    }
+
+    public void letAliensMoveRight() {
+            for (Alien k : alienRowOne) {
+                k.tinyMove("right");
+            }
+    }
+
+    public void letOtherAliensMoveLeft() {
+        for (Alien k : alienRowTwo) {
+            k.tinyMove("left");
+        }
+    }
+
+    public void letOtherAliensMoveRight() {
+        for (Alien k : alienRowTwo) {
+            k.tinyMove("right");
         }
     }
 }
