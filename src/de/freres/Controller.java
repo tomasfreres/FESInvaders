@@ -68,6 +68,7 @@ public class Controller extends Canvas {
             alienRowTwo.add(new Alien(i, 50));
         }
 
+        shootprobebility = 0.99;
 
         shield = new ArrayList<>();
         shield.add(new Shield(100, 360));
@@ -255,7 +256,7 @@ public class Controller extends Canvas {
             if (player.getLifePoints() > 0) {
                 player.draw(g);
             } else {
-                g2d.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 0, 450, 600, null);
+                graphicsContext.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 0, 450, 600, null);
 
                 String option[] = {"Neustart", "Beenden"};
 
