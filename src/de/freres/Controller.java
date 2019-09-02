@@ -27,6 +27,11 @@ public class Controller extends Canvas {
     JFrame field;
     private ArrayList<Shield> shield;
 
+    /**
+     *
+     * @param eingabe defines the player's name
+     * @throws InterruptedException
+     */
     public Controller(String eingabe) throws InterruptedException {
         this.aliens = new ArrayList<>();
         this.shots = new ArrayList<>();
@@ -47,6 +52,9 @@ public class Controller extends Canvas {
         start();
     }
 
+    /**
+     * Initiates the gameloop and generates first set of aliens, positions the player and adds the shields to the arraylist
+     */
     public void start(){
         aliens = new ArrayList<>();
         aliens.add(new Alien(30, 50));
@@ -81,6 +89,13 @@ public class Controller extends Canvas {
         }
     }
 
+    /**
+     * refreshDisplay features the gameloop and draws the objects onto the canvas
+     *
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public void refreshDisplay() throws InterruptedException, IOException, URISyntaxException {
 
         while(true){
@@ -217,6 +232,9 @@ public class Controller extends Canvas {
 
     }
 
+    /**
+     * Lets every alien shoot with an probability of 0,01%
+     */
     public void letAliensShoot(){
         for (Alien k: aliens
              ) {
