@@ -231,6 +231,17 @@ public class Controller extends Canvas {
 
 
             //---------------------------------------------Spawnt Aliens neu
+            if (alienRowOne.isEmpty()) {
+                for (Alien alien : alienRowTwo
+                ) {
+                    alien.setY(100);
+                }
+
+                if(alienRowTwo.isEmpty()) {
+                    shootprobebility = shootprobebility - 0.001;
+                }
+            }
+
 
             if (alienRowTwo.size() == 0) {
 
@@ -241,14 +252,6 @@ public class Controller extends Canvas {
 
             }
 
-            if (alienRowOne.isEmpty()) {
-                for (Alien alien : alienRowTwo
-                ) {
-                    alien.setY(100);
-                }
-
-                shootprobebility = shootprobebility - 0.01;
-            }
 
 
             //--------------------------------------------- Zeichnet Spieler
