@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.Buffer;
 
+/**
+ * Alien class is a subclass of token
+ */
 public class Alien extends Token {
     private int scorePoints;
     static protected BufferedImage image;
@@ -17,12 +20,21 @@ public class Alien extends Token {
         }
     }
 
+    /**
+     *
+     * @param posx Position on the X-axis of the alien
+     * @param posy Position on the Y-axis of the alien
+     */
     public Alien(int posx, int posy) {
         super(posx, posy);
         scorePoints = 10;
         lifePoints = 1;
     }
 
+    /**
+     *
+     * @return Returns Shot object with y coordinate of alien and x + 17 coordinate (so that the shot is from the middle of the bitmap
+     */
     public Shot shoot(){
             return new Shot(posx + 17, posy, "down");
     }
@@ -32,6 +44,9 @@ public class Alien extends Token {
         return Alien.image;
     }
 
+    /**
+     * Deprecated
+     */
     public void destroy(){
         Stroke stroke1 = new BasicStroke(2f);
 
