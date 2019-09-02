@@ -148,7 +148,11 @@ public class Controller extends Canvas {
                             }
                         }
                     }
+
+                    if(!shots.isEmpty() && i < shots.size()) {
                     player.hitbox(shots.get(i));
+                    }
+
                 }
                 else{
                     shots.remove(i);
