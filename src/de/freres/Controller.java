@@ -31,7 +31,6 @@ public class Controller extends Canvas {
     private ArrayList<Shield> shield;
 
     /**
-     *
      * @param eingabe defines the player's name
      * @throws InterruptedException
      */
@@ -58,28 +57,28 @@ public class Controller extends Canvas {
     /**
      * Initiates the gameloop and generates first set of aliens, positions the player and adds the shields to the arraylist
      */
-    public void start(){
+    public void start() {
 
 
         alienRowOne = new ArrayList<>();
         alienRowTwo = new ArrayList<>();
 
-            for (int i =50 ;  i < 360; i += 40 ) {
-                alienRowOne.add(new Alien (i, 100));
-                alienRowTwo.add(new Alien (i, 50));
-             }
+        for (int i = 50; i < 360; i += 40) {
+            alienRowOne.add(new Alien(i, 100));
+            alienRowTwo.add(new Alien(i, 50));
+        }
 
 
         shield = new ArrayList<>();
-        shield.add(new Shield(100,360));
-        shield.add(new Shield(200,360));
-        shield.add(new Shield(300,360));
+        shield.add(new Shield(100, 360));
+        shield.add(new Shield(200, 360));
+        shield.add(new Shield(300, 360));
 
 
-       this.player.setX(225);
-       this.player.setY(500);
-       this.player.setScore(0);
-       this.player.setLifePoints(3);
+        this.player.setX(225);
+        this.player.setY(500);
+        this.player.setScore(0);
+        this.player.setLifePoints(3);
 
 
         try {
@@ -102,7 +101,7 @@ public class Controller extends Canvas {
      */
     public void refreshDisplay() throws InterruptedException, IOException, URISyntaxException {
 
-        while(true){
+        while (true) {
             Graphics graphicsContext = this.getGraphics();
 
             BufferedImage bimage = new BufferedImage(450, 600,
@@ -115,11 +114,11 @@ public class Controller extends Canvas {
 
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
-            g2d.fillRect(0,0,450,600);
+            g2d.fillRect(0, 0, 450, 600);
             g2d.setColor(Color.white);
-            g2d.drawString("Player: " + player.getName(),20,20);
-            g2d.drawString("Score: " +player.getScore(), 20, 40);
-            g2d.drawString("Lives: " + player.getLifePoints(), 370,20);
+            g2d.drawString("Player: " + player.getName(), 20, 20);
+            g2d.drawString("Score: " + player.getScore(), 20, 40);
+            g2d.drawString("Lives: " + player.getLifePoints(), 370, 20);
 
             field.addKeyListener(new KeyAdapter() {
                 @Override
@@ -131,19 +130,20 @@ public class Controller extends Canvas {
                         case 'a':
                             Controller.left = true;
                             break;
-                        case 'v': Controller.space = true;
+                        case 'v':
+                            Controller.space = true;
                             break;
                     }
                 }
             });
 
-            if(right){
+            if (right) {
                 player.move("right");
             }
-            if(left){
+            if (left) {
                 player.move("left");
             }
-            if(space){
+            if (space) {
                 shots.add(player.shoot());
                 player.payShot();
             }
@@ -152,12 +152,12 @@ public class Controller extends Canvas {
             Controller.left = false;
 
             //--------------------------------------------------------- Berechnet Treffer
-            for(int i = 0; i < shots.size(); i++){
+            for (int i = 0; i < shots.size(); i++) {
                 shots.get(i).shotPosition();
-                if(shots.get(i).getY() > 0 && shots.get(i).getY() < 600){
+                if (shots.get(i).getY() > 0 && shots.get(i).getY() < 600) {
 
-                    for(int j = 0; j < alienRowOne.size(); j++) {
-                        if(!shots.isEmpty() && i < shots.size()) {
+                    for (int j = 0; j < alienRowOne.size(); j++) {
+                        if (!shots.isEmpty() && i < shots.size()) {
                             if (alienRowOne.get(j).hitbox(shots.get(i))) {
                                 shots.remove(i);
                             } else {
@@ -168,8 +168,8 @@ public class Controller extends Canvas {
                         }
                     }
 
-                    for(int k = 0; k < alienRowTwo.size(); k++) {
-                        if(!shots.isEmpty() && i < shots.size()) {
+                    for (int k = 0; k < alienRowTwo.size(); k++) {
+                        if (!shots.isEmpty() && i < shots.size()) {
                             if (alienRowTwo.get(k).hitbox(shots.get(i))) {
                                 shots.remove(i);
                             } else {
@@ -179,8 +179,8 @@ public class Controller extends Canvas {
                         }
                     }
 
-                    for(int j = 0; j < shield.size(); j++) {
-                        if(!shots.isEmpty() && i < shots.size()) {
+                    for (int j = 0; j < shield.size(); j++) {
+                        if (!shots.isEmpty() && i < shots.size()) {
                             if (shield.get(j).hitbox(shots.get(i))) {
                                 shots.remove(i);
                             } else {
@@ -189,23 +189,21 @@ public class Controller extends Canvas {
                         }
                     }
 
-                    if(!shots.isEmpty() && i < shots.size()) {
-                    player.hitbox(shots.get(i));
+                    if (!shots.isEmpty() && i < shots.size()) {
+                        player.hitbox(shots.get(i));
                     }
 
-                }
-                else{
+                } else {
                     shots.remove(i);
                 }
             }
 
             //--------------------------------------------- Löscht Alien wenn Lifepoints = 0
-            for(int i = 0; i < alienRowOne.size(); i++){
-                if(alienRowOne.get(i).getLifePoints() == 0){
+            for (int i = 0; i < alienRowOne.size(); i++) {
+                if (alienRowOne.get(i).getLifePoints() == 0) {
                     alienRowOne.remove(i);
                     player.settleScore();
-                }
-                else{
+                } else {
                     alienRowOne.get(i).draw(g);
                 }
 
@@ -216,18 +214,16 @@ public class Controller extends Canvas {
                 if (alienRowTwo.get(i).getLifePoints() == 0) {
                     alienRowTwo.remove(i);
                     player.settleScore();
-                }
-                else {
+                } else {
                     alienRowTwo.get(i).draw(g);
                 }
             }
 
             //--------------------------------------------- Löscht Schild wenn Lifepoints = 0
-            for(int i = 0; i < shield.size(); i++){
-                if(shield.get(i).getLifePoints() == 0){
+            for (int i = 0; i < shield.size(); i++) {
+                if (shield.get(i).getLifePoints() == 0) {
                     shield.remove(i);
-                }
-                else{
+                } else {
                     shield.get(i).draw(g);
                 }
             }
@@ -235,42 +231,39 @@ public class Controller extends Canvas {
 
             //---------------------------------------------Spawnt Aliens neu
 
-            if (alienRowTwo.size()== 0) {
+            if (alienRowTwo.size() == 0) {
 
-                for (int i =50 ;  i < 360; i += 40 ) {
-                    alienRowOne.add(new Alien (i, 100));
-                    alienRowTwo.add(new Alien (i, 50));
+                for (int i = 50; i < 360; i += 40) {
+                    alienRowOne.add(new Alien(i, 100));
+                    alienRowTwo.add(new Alien(i, 50));
                 }
 
             }
 
-<<<<<<< Updated upstream
-            if(alienRowOne.isEmpty()){
-                for (Alien alien: alienRowTwo
-                     ) {
+            if (alienRowOne.isEmpty()) {
+                for (Alien alien : alienRowTwo
+                ) {
                     alien.setY(100);
                 }
-=======
 
                 shootprobebility = shootprobebility - 0.01;
->>>>>>> Stashed changes
             }
 
 
             //--------------------------------------------- Zeichnet Spieler
 
-            if (player.getLifePoints() > 0){
-            player.draw(g);}
-            else{
+            if (player.getLifePoints() > 0) {
+                player.draw(g);
+            } else {
                 g2d.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 0, 450, 600, null);
 
-                String option[]= {"Neustart", "Beenden"};
+                String option[] = {"Neustart", "Beenden"};
 
-                if(JOptionPane.showOptionDialog(null, "Wollen Sie erneut spielen?", "Game Over", JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.YES_NO_CANCEL_OPTION, null, option, option[0] )== JOptionPane.YES_OPTION){
-shots.clear();
-                        start();
-                }else{
+                if (JOptionPane.showOptionDialog(null, "Wollen Sie erneut spielen?", "Game Over", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.YES_NO_CANCEL_OPTION, null, option, option[0]) == JOptionPane.YES_OPTION) {
+                    shots.clear();
+                    start();
+                } else {
                     break;
                 }
             }
@@ -278,7 +271,7 @@ shots.clear();
 
             letAliensShoot();
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
-            graphicsContext.drawImage(bimage, 0,0, null);
+            graphicsContext.drawImage(bimage, 0, 0, null);
             graphicsContext.dispose();
             g.dispose();
         }
@@ -288,8 +281,7 @@ shots.clear();
     /**
      * Lets every alien shoot with an probability of 0,01%
      */
-    public void letAliensShoot(){
-<<<<<<< Updated upstream
+    public void letAliensShoot() {
         if (alienRowOne.size() > 0) {
             for (Alien k : alienRowOne
             ) {
@@ -297,21 +289,14 @@ shots.clear();
                     shots.add(k.shoot());
                 }
             }
-        }
-        else {
-            for (Alien k: alienRowTwo){
+        } else {
+            for (Alien k : alienRowTwo) {
                 if (Math.random() > 0.99) {
                     shots.add(k.shoot());
-=======
-        for (Alien k: aliens
-             ) {
-            if(Math.random() > shootprobebility){
-                shots.add(k.shoot());
->>>>>>> Stashed changes
+
+                }
+
             }
         }
     }
-
-    }
-
 }
