@@ -89,4 +89,14 @@ public abstract class Token {
         }
     }
 
+
+    public void tinyMove(String dir){
+        if(dir == "right"){
+            posx = posx + 1;
+        }
+        if(dir == "left"){
+            posx = posx - 1;
+        }
+    }
+
 }
