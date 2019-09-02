@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -101,8 +102,15 @@ public class Controller extends Canvas {
     public void refreshDisplay() throws InterruptedException, IOException, URISyntaxException {
 
         while(true){
-            Graphics g = this.getGraphics();
+            Graphics graphicsContext = this.getGraphics();
+
+            BufferedImage bimage = new BufferedImage(450, 600,
+                    BufferedImage.TYPE_BYTE_INDEXED);
+
             TimeUnit.MILLISECONDS.sleep(50);
+
+            Graphics g = bimage.getGraphics();
+
 
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.black);
@@ -235,6 +243,13 @@ public class Controller extends Canvas {
 
             }
 
+            if(alienRowOne.isEmpty()){
+                for (Alien alien: alienRowTwo
+                     ) {
+                    alien.setY(100);
+                }
+            }
+
 
             //--------------------------------------------- Zeichnet Spieler
 
@@ -247,7 +262,7 @@ public class Controller extends Canvas {
 
                 if(JOptionPane.showOptionDialog(null, "Wollen Sie erneut spielen?", "Game Over", JOptionPane.DEFAULT_OPTION,
                         JOptionPane.YES_NO_CANCEL_OPTION, null, option, option[0] )== JOptionPane.YES_OPTION){
-
+shots.clear();
                         start();
                 }else{
                     break;
@@ -256,6 +271,8 @@ public class Controller extends Canvas {
             space = false;
             letAliensShoot();
             //--------------------------------------------- Löscht graphischen Kontext nach Durchlauf
+            graphicsContext.drawImage(bimage, 0,0, null);
+            graphicsContext.dispose();
             g.dispose();
         }
 
