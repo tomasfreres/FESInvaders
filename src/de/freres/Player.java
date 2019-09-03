@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Player is a subclass of token
+ */
 public class Player extends Token {
     public String getName() {
         return name;

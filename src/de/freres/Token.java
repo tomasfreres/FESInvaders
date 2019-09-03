@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Token is an abstract class that defines the main objects on the game field
+ */
 public abstract class Token {
 
 

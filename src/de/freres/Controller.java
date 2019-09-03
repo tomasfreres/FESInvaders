@@ -11,6 +11,9 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Controller
+ */
 public class Controller extends Canvas {
 
 

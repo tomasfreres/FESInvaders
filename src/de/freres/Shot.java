@@ -3,6 +3,9 @@ package de.freres;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Shot is a subclass of token and will be rendered without bitmap
+ */
 public class Shot extends Token{
 
     String dir;
