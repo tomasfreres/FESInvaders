@@ -264,7 +264,9 @@ public class Controller extends Canvas {
             if (player.getLifePoints() > 0) {
                 player.draw(g);
             } else {
-                graphicsContext.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 0, 450, 600, null);
+                graphicsContext.drawImage(ImageIO.read(Alien.class.getResource("/Gameover.png")), 0, 50, 450, 550, null);
+                g2d.drawString("Score: " + player.getScore(), 20, 40);
+                g2d.drawString("Lives: " + player.getLifePoints(), 370, 20);
 
                 String option[] = {"Neustart", "Beenden"};
 
